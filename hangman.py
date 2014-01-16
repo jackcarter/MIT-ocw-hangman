@@ -102,6 +102,22 @@ def play_hangman():
     # Update secret_word. Don't uncomment this line until you get to Step 8.
     # secret_word  = get_word()
 
-    ####### YOUR CODE HERE ######
+    while True:
+        print (len(letters_guessed) - MAX_GUESSES), 'guesses left.'
+        print print_guessed()
+        guessed_letter = lower(raw_input("Your guess: "))
+        if guessed_letter in letters_guessed:
+            print "You already guessed that!"
+        else:
+            letters_guessed.append(guessed_letter)
+            if guessed_letter in secret_word:
+				if word_guessed():
+	                print "You win! The word was", secret_word
+	            else:
+	                print "Nice!"
+            else:
+                print "Nope!"
+            print print_guessed()
+        
     return None
 
