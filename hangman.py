@@ -54,13 +54,8 @@ def get_word():
 # end of helper code
 # -----------------------------------
 
-
 # CONSTANTS
 MAX_GUESSES = 6
-
-# GLOBAL VARIABLES 
-secret_word = 'claptrap' 
-letters_guessed = []
 
 # From part 3b:
 def word_guessed():
@@ -109,6 +104,7 @@ def play_hangman():
     global letters_guessed
     # Put the mistakes_made variable here, since you'll only use it in this function
     mistakes_made = 0
+    letters_guessed = []
 
     secret_word  = get_word()
 
