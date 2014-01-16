@@ -98,27 +98,29 @@ def play_hangman():
     # Put the mistakes_made variable here, since you'll only use it in this function
     mistakes_made = 0
 
-    # Update secret_word. Don't uncomment this line until you get to Step 8.
-    # secret_word  = get_word()
+    secret_word  = get_word()
 
     while True:
-        print (MAX_GUESSES - len(letters_guessed)), 'guesses left.'
+        print (MAX_GUESSES - mistakes_made), 'incorrect guesses left.'
         print print_guessed()
         guessed_letter = lower(raw_input("Your guess: "))
         if guessed_letter in letters_guessed:
             print "You already guessed that!"
         else:
-            letters_guessed.append(guessed_letter)
+            letters_guessed.append(guessed_letter)			
+            print print_guessed()
             if guessed_letter in secret_word:
                 if word_guessed():
-                    print "You win! The word was", secret_word
+                    print "You win!"
                     break
                 else:
                     print "Nice!"
             else:
                 print "Nope!"
-            print print_guessed()
-        
+                mistakes_made += 1
+                if mistakes_made == MAX_GUESSES:
+                    print "You lose! The word was", secret_word
+                    break        
     return None
 
 play_hangman()
