@@ -83,11 +83,14 @@ def print_guessed():
     global secret_word
     global letters_guessed
     
+    output = []
+
     for secret_letter in secret_word:
         if secret_letter in letters_guessed:
-            print secret_letter
+            output.append(secret_letter)
         else:
-            print UNGUESSED_LETTER
+            output.append(UNGUESSED_LETTER)
+    return ''.join(output)
 
 def play_hangman():
     # Actually play the hangman game
