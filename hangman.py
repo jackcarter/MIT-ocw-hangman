@@ -111,10 +111,10 @@ def play_hangman():
         else:
             letters_guessed.append(guessed_letter)
             if guessed_letter in secret_word:
-				if word_guessed():
-	                print "You win! The word was", secret_word
-	            else:
-	                print "Nice!"
+                if word_guessed():
+                    print "You win! The word was", secret_word
+                else:
+                    print "Nice!"
             else:
                 print "Nope!"
             print print_guessed()
