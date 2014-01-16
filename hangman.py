@@ -69,10 +69,11 @@ def word_guessed():
     global secret_word
     global letters_guessed
 
-    ####### YOUR CODE HERE ######
-    pass # This tells your code to skip this function; delete it when you
-         # start working on this function
-
+    for secret_letter in secret_word:
+        if secret_letter not in letters_guessed:
+            return False
+    else:
+        return True
 
 def print_guessed():
     '''
