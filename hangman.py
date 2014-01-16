@@ -5,7 +5,9 @@
 
 # Import statements: DO NOT delete these! DO NOT write code above this!
 from random import randrange
-from string import *
+import string
+import os
+clear = lambda: os.system('cls')
 
 # -----------------------------------
 # Helper code
@@ -28,7 +30,7 @@ def load_words():
     # line: string
     line = inFile.readline()
     # wordlist: list of strings
-    wordlist = split(line)
+    wordlist = string.split(line)
     print "  ", len(wordlist), "words loaded."
     return wordlist
 
@@ -75,6 +77,16 @@ def word_guessed():
     else:
         return True
 
+def print_alphabet():
+    global letters_guessed
+    output = []
+    for letter in string.ascii_lowercase:
+        if letter in letters_guessed:
+            output.append('*')
+        else:
+            output.append(letter)
+    return ''.join(output)
+
 def print_guessed():
     '''
     Prints out the characters you have guessed in the secret word so far
@@ -102,25 +114,26 @@ def play_hangman():
 
     while True:
         print (MAX_GUESSES - mistakes_made), 'incorrect guesses left.'
-        print print_guessed()
-        guessed_letter = lower(raw_input("Your guess: "))
+        print print_alphabet()        
+        print print_guessed()        
+        guessed_letter = string.lower(raw_input("Your guess: "))
+        clear()
         if guessed_letter in letters_guessed:
             print "You already guessed that!"
         else:
-            letters_guessed.append(guessed_letter)			
-            print print_guessed()
+            letters_guessed.append(guessed_letter)
             if guessed_letter in secret_word:
                 if word_guessed():
                     print "You win!"
                     break
                 else:
-                    print "Nice!"
+                    print "Yep!"
             else:
                 print "Nope!"
                 mistakes_made += 1
                 if mistakes_made == MAX_GUESSES:
                     print "You lose! The word was", secret_word
-                    break        
+                    break 
     return None
 
 play_hangman()
