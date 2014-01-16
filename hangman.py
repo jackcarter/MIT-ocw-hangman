@@ -30,7 +30,6 @@ def load_words():
     # wordlist: list of strings
     wordlist = split(line)
     print "  ", len(wordlist), "words loaded."
-    print 'Enter play_hangman() to play a game of hangman!'
     return wordlist
 
 # actually load the dictionary of words and point to it with 
@@ -103,7 +102,7 @@ def play_hangman():
     # secret_word  = get_word()
 
     while True:
-        print (len(letters_guessed) - MAX_GUESSES), 'guesses left.'
+        print (MAX_GUESSES - len(letters_guessed)), 'guesses left.'
         print print_guessed()
         guessed_letter = lower(raw_input("Your guess: "))
         if guessed_letter in letters_guessed:
@@ -113,6 +112,7 @@ def play_hangman():
             if guessed_letter in secret_word:
                 if word_guessed():
                     print "You win! The word was", secret_word
+                    break
                 else:
                     print "Nice!"
             else:
@@ -121,3 +121,4 @@ def play_hangman():
         
     return None
 
+play_hangman()
